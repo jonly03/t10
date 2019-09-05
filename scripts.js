@@ -39,7 +39,12 @@ $(document).ready(function () {
             // Select the first country
             // After we will be selecting a country when the user clicks on it
             if (countryIdx === 0) {
+
+                // Iniatially set the first country to be selected
                 countryDivElement.addClass('selected_country')
+
+                // For selected country, use shinny flags. So set first country flag to be shiny since it's selected by default
+                toggleFlatAndShinny(countryDivElement);
 
                 // Initially populate #selected_country_name
                 $('#selected_country_name').text(countryName)
@@ -65,6 +70,18 @@ $(document).ready(function () {
     })
 })
 
+function toggleFlatAndShinny(selectedCountryDivElemet) {
+    let selectedCountryFlagImgSrc = $($(selectedCountryDivElemet).find('.country_flag')[0]).attr('src');
+
+    if (selectedCountryFlagImgSrc.indexOf('flat') !== -1) {
+        selectedCountryFlagImgSrc = selectedCountryFlagImgSrc.replace("flat", "shiny")
+    } else if (selectedCountryFlagImgSrc.indexOf('shiny') !== -1) {
+        selectedCountryFlagImgSrc = selectedCountryFlagImgSrc.replace("shiny", "flat")
+    }
+
+    $($(selectedCountryDivElemet).find('.country_flag')[0]).attr('src', selectedCountryFlagImgSrc);
+}
+
 function toggleSelectedCountry(event) {
     event.stopPropagation();
 
@@ -72,8 +89,14 @@ function toggleSelectedCountry(event) {
     const selectedCountryElement = $('.selected_country')[0];
     $(selectedCountryElement).removeClass('selected_country')
 
+    // Switch flag to flat for the previously selected country
+    toggleFlatAndShinny(selectedCountryElement);
+
     // Add the .selected_country class to the clicked country
     $(event.currentTarget).addClass('selected_country')
+
+    // Set selected country's flag to shinny
+    toggleFlatAndShinny(event.currentTarget)
 
     // Update the #selected_country_name with the country name of the clicked country
     const clickedCountryName = getClickedCountryName(event);
