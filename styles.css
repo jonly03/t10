@@ -218,6 +218,7 @@ body {
 }
 
 .selected_country {
+    display: block;
     background-color: lightblue;
     position: sticky;
     position: -webkit-sticky;
