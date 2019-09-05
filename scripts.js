@@ -93,7 +93,7 @@ function getClickedCountryName(event) {
 function getTo10SongsByCountryName(countryName) {
     // Use Last.fm API to get to 10 songs in selected country
     // For country names with spaces have to have + sign instead of space
-    const lastFMGeoTopTrackAPIUrlRoot = "http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&api_key=91275a5de31798739413228de2956825&format=json";
+    const lastFMGeoTopTrackAPIUrlRoot = "https://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&api_key=91275a5de31798739413228de2956825&format=json";
 
     const formattedCountryName = getFormattedCountryName(countryName);
 
