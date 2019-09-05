@@ -220,6 +220,8 @@ body {
 .selected_country {
     background-color: lightblue;
     position: sticky;
+    position: -webkit-sticky;
+    /* Safari */
     top: 0;
     bottom: 0;
 }
