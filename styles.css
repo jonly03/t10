@@ -144,6 +144,7 @@ body {
     height: 100%;
     font-family: 'Noto Sans', sans-serif;
     padding: 1rem;
+    overflow: hidden;
 }
 
 #container {
