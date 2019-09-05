@@ -20,8 +20,6 @@ $(document).ready(function () {
                 alpha2Code: countryCode
             } = country;
 
-            // getFormattedCountryName(countryName);
-
             // Per https://www.countryflags.io/, to get a country flag image by its country code we just need to use <img src="https://www.countryflags.io/:country_code/:style/:size.png">
             const flagImgSrc = `${countryFlagsURL}/${countryCode}/flat/64.png`;
 
@@ -122,7 +120,6 @@ function getTo10SongsByCountryName(countryName) {
 
     let top10TrackAPIUrl = `${lastFMGeoTopTrackAPIUrlRoot}&limit=10&country=${formattedCountryName}`;
 
-    // Use Javascript Fetch api instead of jQuery $.get() method
     $.get(top10TrackAPIUrl, function (data) {
         // When the api has no tracks for this country name it will respond with either
         // data: {error} or 
@@ -198,6 +195,9 @@ function getTo10SongsByCountryName(countryName) {
 }
 
 function getFormattedCountryName(countryName) {
+    // Gets a country name (from RESTCountries API)
+    // Returns a country name formatted to match the expected format for the Last.fm API
+
     let newFormattedCountryName = countryName.trim();
 
     // Some countries have paranthesis. Remove them
@@ -228,6 +228,10 @@ function removeCharacters({
     string,
     charsToBeRemoved
 }) {
+
+    // Takes a string and characters to be removed
+    // Returns a string without those characters
+
     let newString = string
     const charsToBeRemovedIdx = newString.indexOf(charsToBeRemoved);
 
@@ -240,6 +244,8 @@ function removeCharacters({
 
 // Copied from https://stackoverflow.com/questions/1484506/random-color-generator
 function getRandomColor() {
+    // Generates a random hex color and returns it
+
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
